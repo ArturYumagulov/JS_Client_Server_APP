@@ -68,12 +68,9 @@
             doneButton,
             deleteButton,
         };
-    };
-
-    document.addEventListener('DOMContentLoaded', function() {
-        let container = document.getElementById('todo-app');
-
-        let todoAppTitle = createAppTitle('Список дел');
+    }
+    function createTodoApp(container, title = "Список дел") {
+        let todoAppTitle = createAppTitle(title);
         let todoItemForm = createTodoItemForm();
         let todoList = createTodoList();
 
@@ -106,5 +103,7 @@
 
             todoItemForm.input.value = '';
         });
-    });
+    }
+
+    window.createTodoApp = createTodoApp;
 })();
