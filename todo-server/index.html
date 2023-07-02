@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>TODO</title>
+    <meta charset="UTF-8">
+    <script>
+      async function loadTodoItem() {
+        const response = await fetch('http://localhost:3000/api/todos');
+        const data = await response.json();
+        console.log(data, 'data')  
+      }
+      
+      async function createTodoItem() {
+        await fetch('http://localhost:3000/api/todos', {
+          method: 'POST',
+          headers: {'Content-Type': 'applications/json'},
+          body: JSON.stringify({
+            name: 'Сходить за хлебом',
+            owner: 'Тимофей'
+          }) 
+        })
+      }
+      // loadTodoItem();
+      // createTodoItem();
+      async function getTodoItem() {
+        const response = await fetch('http://localhost:3000/api/todos/1688277984094');
+        const data = response.json();
+        console.log(data)
+      }
+      async function markTodoAsDone() {
+        await fetch('http://localhost:3000/api/todos/1688277984094', {
+          method: "PATCH",
+          headers: {'Content-Type': 'applications/json'},
+          body: JSON.stringify({'done': true})
+      })
+      }
+      async function deleteTodoItem() {
+        await fetch('http://localhost:3000/api/todos/1688277984094', {
+          method: "DELETE",
+          headers: {'Content-Type': 'applications/json'},
+      })
+      }
+      // markTodoAsDone();
+      deleteTodoItem();
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
